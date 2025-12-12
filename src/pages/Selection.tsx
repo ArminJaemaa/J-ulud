@@ -25,7 +25,7 @@ export default function Selection() {
   }, [received])
 
   return (
-    <div className="grid grid-cols-3 gap-6 p-6">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-4">
       <div className="flex flex-col items-start">
         <h2 className=" text-xl text-white rounded-xl bg-green-700/90 pl-5 pr-5 font-bold mb-3">
           Välja jäetud
