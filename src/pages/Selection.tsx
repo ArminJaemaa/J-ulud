@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import RandomSelection from "../components/RandomSelection"
 
-export default function Selection() {
+export default function Selection({ bgMusicRef }: { bgMusicRef: any }) {
   const [players, setPlayers] = useState<string[]>([])
   const [leftOut, setLeftOut] = useState<string[]>([])
   const [received, setReceived] = useState<string[]>([])
@@ -57,6 +57,7 @@ export default function Selection() {
           received={received}
           setReceived={setReceived}
           setLeftOut={setLeftOut}
+          bgMusicRef={bgMusicRef}
         />
       </div>
 

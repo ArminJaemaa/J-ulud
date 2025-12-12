@@ -7,6 +7,7 @@ interface Props {
   received: string[]
   setReceived: React.Dispatch<React.SetStateAction<string[]>>
   setLeftOut?: React.Dispatch<React.SetStateAction<string[]>>
+  bgMusicRef?: React.RefObject<HTMLAudioElement>
 }
 
 export default function RandomSelection({
@@ -15,6 +16,7 @@ export default function RandomSelection({
   received,
   setReceived,
   setLeftOut,
+  bgMusicRef,
 }: Props) {
   const [selected, setSelected] = useState<string | null>(null)
   const [modalOpen, setModalOpen] = useState(false)
@@ -22,18 +24,27 @@ export default function RandomSelection({
   const [isDrawing, setIsDrawing] = useState(false)
 
   const playDrumRoll = () => {
-    const audio = new Audio("/sounds/drum-roll.mp3")
-    audio.play()
-  }
+    bgMusicRef?.current.pause()
 
-  const activePlayers = players.filter(
-    p => !leftOut.includes(p) && !received.includes(p),
-  )
+    const drum = new Audio(import.meta.env.BASE_URL + "sounds/drum_roll.mp3")
+    drum.volume = 0.7
+    drum.play()
+
+    drum.onended = () => {
+      if (bgMusicRef?.current) {
+        bgMusicRef.current.volume = 0.4
+      }
+    }
+  }
 
   const optOut = (name: string) => {
     if (!setLeftOut) return
     setLeftOut(prev => [...prev, name])
   }
+
+  const activePlayers = players.filter(
+    p => !leftOut.includes(p) && !received.includes(p),
+  )
 
   function pickRandom() {
     if (isDrawing) return
@@ -76,7 +87,7 @@ export default function RandomSelection({
         {selected ?? "—"}
       </div>
 
-      <p className=" text-xl text-gray-300 mt-2">
+      <div className=" text-xl text-gray-300 mt-2">
         Järele jäänud
         {activePlayers.map(name => (
           <div
@@ -94,7 +105,7 @@ export default function RandomSelection({
             )}
           </div>
         ))}
-      </p>
+      </div>
       {/* Modal */}
       {modalOpen && (
         <div className="fixed inset-0 bg-black/100 flex items-center justify-center z-50">
@@ -123,6 +134,7 @@ export default function RandomSelection({
                 onClick={() => {
                   setModalOpen(false)
                   setConfettiActive(false)
+                  bgMusicRef?.current.play()
                 }}
                 disabled={isDrawing}
                 className="absolute top-3 right-3 bg-red-500 text-white rounded-full w-10 h-10 flex items-center justify-center font-bold hover:bg-red-600"
