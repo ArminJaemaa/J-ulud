@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 
 export default function MainPage() {
   const [playerName, setPlayerName] = useState("")
@@ -43,7 +44,11 @@ export default function MainPage() {
           Add
         </button>
       </div>
-
+      <Link to={"/selection"}>
+        <button className="bg-white/40 pl-5 pr-5 rounded-xl hover:bg-green-400">
+          Edasi
+        </button>
+      </Link>
       <ul className="fixed top-4 right-4 w-64 space-y-2 z-20">
         {players.map((name, index) => (
           <li
