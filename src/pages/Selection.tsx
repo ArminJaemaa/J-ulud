@@ -28,7 +28,7 @@ export default function Selection({ bgMusicRef }: { bgMusicRef: any }) {
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-4">
       <div className="flex flex-col items-start">
         <h2 className=" text-xl text-white rounded-xl bg-green-700/90 pl-5 pr-5 font-bold mb-3">
-          Välja jäetud
+          Välja jäetud ⛔
         </h2>
 
         <ul className="space-y-2">
@@ -37,13 +37,13 @@ export default function Selection({ bgMusicRef }: { bgMusicRef: any }) {
               key={name}
               className="flex justify-between bg-black/30 p-2 rounded"
             >
-              <span>{name}</span>
+              <span className="text-white text-xl ">{name}</span>
 
               <button
                 onClick={() => setLeftOut(prev => prev.filter(n => n !== name))}
-                className="px-2 py-1 rounded text-sm bg-green-500 text-white"
+                className="px-2 ml-2 py-1 rounded text-sm bg-green-500 text-white"
               >
-                Put back
+                {"->"}
               </button>
             </li>
           ))}
@@ -63,7 +63,7 @@ export default function Selection({ bgMusicRef }: { bgMusicRef: any }) {
 
       <div className="flex flex-col items-end">
         <h2 className="text-xl text-white rounded-xl bg-green-700/90 pl-5 pr-5 font-bold mb-3">
-          Received Gifts
+          Kingi kätte saanud 🎁
         </h2>
 
         <ul className="space-y-2">
@@ -72,14 +72,14 @@ export default function Selection({ bgMusicRef }: { bgMusicRef: any }) {
               key={name}
               className="flex justify-between bg-green-600/40 p-2 rounded"
             >
-              <span>{name}</span>
+              <span className="text-white text-xl">{name}</span>
               <button
                 onClick={() =>
                   setReceived(prev => prev.filter(n => n !== name))
                 }
-                className="px-2 py-1 bg-red-500 text-white rounded text-sm"
+                className="px-2 ml-2 py-1 bg-red-500 text-white rounded text-sm"
               >
-                Undo
+                X
               </button>
             </li>
           ))}

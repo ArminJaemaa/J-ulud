@@ -72,15 +72,15 @@ export default function RandomSelection({
   return (
     <div className="bg-black/30 p-6 rounded-xl text-center shadow-xl min-w-[250px]">
       <h2 className="text-xl text-white mb-4 font-bold bg-green-700/90 p-2 rounded-xl">
-        Random Selection
+        Randomisaator
       </h2>
 
       <button
         onClick={pickRandom}
-        className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-semibold mb-4"
+        className="bg-green-600 hover:bg-green-800 text-white px-4 py-2 rounded-lg font-semibold mb-4"
         disabled={isDrawing}
       >
-        Pick Random
+        Vali suvaline
       </button>
 
       <div className="text-2xl text-white font-bold min-h-[50px]">
@@ -98,15 +98,15 @@ export default function RandomSelection({
             {setLeftOut && (
               <button
                 onClick={() => optOut(name)}
-                className="bg-red-500 text-white ml-5 px-2 py-1 rounded text-sm"
+                className="bg-red-500 hover:bg-red-700 text-white ml-5 px-2 py-1 rounded text-sm"
               >
-                Opt out
+                X
               </button>
             )}
           </div>
         ))}
       </div>
-      {/* Modal */}
+
       {modalOpen && (
         <div className="fixed inset-0 bg-black/100 flex items-center justify-center z-50">
           {confettiActive && (
