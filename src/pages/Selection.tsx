@@ -25,7 +25,13 @@ export default function Selection({ bgMusicRef }: { bgMusicRef: any }) {
   }, [received])
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-4">
+    <div
+      className="
+  grid grid-cols-1 md:grid-cols-3
+  gap-4 md:gap-6 2xl:gap-12
+  p-4 md:p-6 2xl:p-16
+"
+    >
       <div className="flex flex-col items-start">
         <h2 className=" text-xl text-white rounded-xl bg-green-700/90 pl-5 pr-5 font-bold mb-3">
           Välja jäetud ⛔
@@ -35,7 +41,7 @@ export default function Selection({ bgMusicRef }: { bgMusicRef: any }) {
           {leftOut.map(name => (
             <li
               key={name}
-              className="flex justify-between bg-black/30 p-2 rounded"
+              className="flex justify-between bg-black/70 p-2 rounded"
             >
               <span className="text-white text-xl ">{name}</span>
 
@@ -70,14 +76,14 @@ export default function Selection({ bgMusicRef }: { bgMusicRef: any }) {
           {received.map(name => (
             <li
               key={name}
-              className="flex justify-between bg-green-600/40 p-2 rounded"
+              className="flex justify-between bg-black/70 p-2 rounded"
             >
               <span className="text-white text-xl">{name}</span>
               <button
                 onClick={() =>
                   setReceived(prev => prev.filter(n => n !== name))
                 }
-                className="px-2 ml-2 py-1 bg-red-500 text-white rounded text-sm"
+                className="px-2 ml-2 py-1 hover:bg-red-500 text-white rounded text-sm"
               >
                 X
               </button>
